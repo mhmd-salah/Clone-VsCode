@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  background-color: #f0f8ff; /* Alice Blue */
+  color: #000;
+  font-family: 'Arial', sans-serif;
+}
