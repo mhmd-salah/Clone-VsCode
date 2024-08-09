@@ -1,13 +1,12 @@
-import { defineConfig } from "vite";
+import { defineConfig, UserConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(),],
+  plugins: [react(),  ],
   server: {
     port: 3000,
     host: "0.0.0.0",
-    open:true,
     watch: {
       usePolling: true,
     },
@@ -27,5 +26,5 @@ export default defineConfig({
   },
   base: "/",  
   publicDir: "public",
-
-});
+  
+} satisfies UserConfig);
