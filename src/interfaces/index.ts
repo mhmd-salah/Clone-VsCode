@@ -1,6 +1,8 @@
 export interface Ifile{
-  name:string,
+  filename:string,
   isFolder:boolean,
   children?: Ifile[],
   content?:string
 }
+
+

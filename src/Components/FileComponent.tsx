@@ -1,14 +1,22 @@
-import FileIcon from './Icon/FileIcon';
+import { Ifile } from "../interfaces";
+import FileIcon from "./Icon/FileIcon";
 
-function FileComponent({fileName}:{fileName:string}) {
+function FileComponent({ fileTree }: { fileTree: Ifile }) {
   return (
-    <div className="flex items-center">
-      <span>
-        <FileIcon />
-      </span>
-      <span>{fileName}</span>
+    <div className="mb-2 ml-2">
+      <div className="flex items-center">
+        <span>&gt;</span>
+        <span>
+          <FileIcon />
+        </span>
+        <span>{fileTree.filename}</span>
+      </div>
+      {fileTree.children &&
+        fileTree.children.map((file, idx) => {
+          return <FileComponent key={idx} fileTree={file} />;
+        })}
     </div>
   );
 }
 
-export default FileComponent
+export default FileComponent;

@@ -38,5 +38,9 @@ export const fileTree: Ifile =
         filename: "style.css",
         isFolder: false,
       },
+      {
+        filename: "vite.config.ts",
+        isFolder:false
+      }
     ],
   }
