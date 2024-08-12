@@ -19,7 +19,7 @@ export const fileTree: Ifile =
             isFolder: true,
             children: [
               {
-                filename: "reactJs",
+                filename: "react.js",
                 isFolder: false,
               },
             ],
