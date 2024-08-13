@@ -1,13 +1,19 @@
 import FolderComponent from "./Components/FolderComponents";
+import OpendBar from "./Components/OpendBar";
 import { fileTree } from "./Data/FileTree";
 
 
 function App() {
   return (
     <>
-      <div className="flex flex-col m-3">
-        {/* <FileComponent fileTree={fileTree} /> */}
-        <FolderComponent fileTree={fileTree}/>
+      {/* <FileComponent fileTree={fileTree} /> */}
+      <div className="flex  ">
+        <div className="w-64 m-5">
+          <FolderComponent fileTree={fileTree} />
+        </div>
+        <div className="p-4">
+          <OpendBar />
+        </div>
       </div>
     </>
   );

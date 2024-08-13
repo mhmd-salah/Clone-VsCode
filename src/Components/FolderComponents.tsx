@@ -4,19 +4,33 @@ import FileIcon from "./Icon/FileIcon";
 import FolderIcon from "./Icon/FolderIcon";
 import FolderOpen from "./Icon/Folderopen";
 import RenderFileIcon from "./RenderFileIcon";
+import { useDispatch, useSelector } from "react-redux";
+import { setOpendFile } from "../app/features/fileTree";
+import { RootState } from "../app/store";
 
 function FolderComponent({
-  fileTree: { filename, isFolder, children },
+  fileTree,
 }: {
   fileTree: Ifile;
 }) {
+  const { filename, isFolder, children } = fileTree
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const dispatch=useDispatch();
+  const {opendFiles}=useSelector((state:RootState)=>state.fileTreeSlice)
+  //Handlers
   const toggle = () => setIsOpen((prev) => !prev);
+  const onFileClicked=()=>{
+    if(opendFiles.includes(fileTree))return;
+    dispatch(setOpendFile([...opendFiles, fileTree]));
+  }
   return (
     <div className="ml-3">
-      <div className="flex items-center mb-2 space-x-1 cursor-pointer" onClick={toggle}>
+      <div
+        className="flex items-center mb-2 space-x-1 cursor-pointer"
+        onClick={toggle}
+      >
         {isFolder && isOpen ? (
-          <span className="rotate-180">^</span>
+          <span className="rotate-90 ">&gt;</span>
         ) : (
           <span>&gt;</span>
         )}
@@ -25,7 +39,9 @@ function FolderComponent({
         </span>
         {/* <span>{filename}</span> */}
         {!isFolder ? (
-          <RenderFileIcon filename={filename} />
+          <div onClick={onFileClicked}>
+            <RenderFileIcon filename={filename} />
+          </div>
         ) : (
           <span>{filename}</span>
         )}
