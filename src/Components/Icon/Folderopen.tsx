@@ -1,6 +1,6 @@
+import { StyleIcon } from "../../styles";
 
 export default function FolderOpen() {
-  return (
-    <img src="/icons/folder open.png" width={26} height={26} />
-  )
+  return <img src="/icons/folder open.png" style={StyleIcon} />;
+
 }

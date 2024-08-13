@@ -1,9 +1,8 @@
+import { StyleIcon } from "../../styles";
 
 function FileIcon() {
 
-  return (
-    <img src="/icons/file.png" width={26} height={26}/>
-  );
+  return <img src="/icons/file.png" style={StyleIcon} />;
 }
 
 export default FileIcon

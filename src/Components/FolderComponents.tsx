@@ -30,9 +30,9 @@ function FolderComponent({
         onClick={toggle}
       >
         {isFolder && isOpen ? (
-          <span className="rotate-90 ">&gt;</span>
+          <span className="rotate-90 text-white/40">&gt;</span>
         ) : (
-          <span>&gt;</span>
+          <span className="text-white/40">&gt;</span>
         )}
         <span>
           {isFolder ? isOpen ? <FolderOpen /> : <FolderIcon /> : <FileIcon />}
