@@ -6,7 +6,7 @@ import FolderOpen from "./Icon/Folderopen";
 import RenderFileIcon from "./RenderFileIcon";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../app/store";
-import { setActiveTapId, setOpendFileAction } from "../app/features/fileTree";
+import { setActiveTapId, setClicedFileAction, setOpendFileAction } from "../app/features/fileTree";
 
 function FolderComponent({ fileTree }: { fileTree: Ifile }) {
   const {id, filename, isFolder, children } = fileTree;
@@ -16,9 +16,14 @@ function FolderComponent({ fileTree }: { fileTree: Ifile }) {
   //Handlers
   const toggle = () => setIsOpen((prev) => !prev);
   const onFileClicked = () => {
-    if (opendFiles.includes(fileTree)) return;
+    if (opendFiles.includes(fileTree)) {
+      dispatch(setActiveTapId(id))
+      dispatch(setClicedFileAction({ filename, fileContent: fileTree.content }));
+      return;
+    }
     dispatch(setOpendFileAction([...opendFiles, fileTree]));
     dispatch(setActiveTapId(id))
+    dispatch(setClicedFileAction({ filename, fileContent: fileTree.content }));
   };
   return (
     <div className="ml-3">
