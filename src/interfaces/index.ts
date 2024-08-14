@@ -1,5 +1,5 @@
 export interface Ifile{
-  id:number;
+  id:string;
   filename:string,
   isFolder:boolean,
   children?: Ifile[],
