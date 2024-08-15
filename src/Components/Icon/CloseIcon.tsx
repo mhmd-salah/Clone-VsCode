@@ -10,5 +10,5 @@ function CloseIcon({className}:Record<string,string>) {
     />
   );
 }
-
+g
 export default CloseIcon

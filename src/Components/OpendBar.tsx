@@ -7,7 +7,7 @@ function OpendBar() {
 
   
   return (
-    <div className="w-[calc(100vw-256px )] h-[44]">
+    <div className="w-[calc(100vw-256px )] h-[44]   ">
       <ul className="flex items-center transition h-[47] ">
         {opendFiles &&
           opendFiles.map((file) => {
