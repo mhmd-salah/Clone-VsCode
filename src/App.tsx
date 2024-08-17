@@ -5,10 +5,11 @@ import { fileTree } from "./Data/FileTree";
 import { RootState } from "./app/store";
 import FileSyntaxHighlighter from "./Components/FileSyntaxHighlighter";
 
-
 function App() {
-  const {clickedFiles}= useSelector((state:RootState)=>state.fileTreeSlice)
-  const {fileContent}=clickedFiles;
+  const { clickedFiles } = useSelector(
+    (state: RootState) => state.fileTreeSlice
+  );
+  const { fileContent } = clickedFiles;
   return (
     <>
       {/* <FileComponent fileTree={fileTree} /> */}
@@ -20,10 +21,16 @@ function App() {
           <FolderComponent fileTree={fileTree} />
         </div>
         <div>
-          <div className="flex flex-col w-[calc(100vw-256px)] justify-center border-b h-fit border-white/20">
+          <div className="flex flex-col w-[calc(100vw-256px)] justify-center border-b h-fit border-white/20 overflow">
             <OpendBar />
           </div>
-          <FileSyntaxHighlighter content={fileContent as string} />
+          {fileContent ? (
+            <FileSyntaxHighlighter content={fileContent as string} />
+          ) : (
+            <div className="w-full h-[calc(100vh-40px)] flex items-center justify-center select-none">
+              <img src="/icons/vscode.png" className="opacity-30" />
+            </div>
+          )}
         </div>
       </div>
     </>

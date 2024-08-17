@@ -11,6 +11,7 @@ function OpenfilesBarTap({ file }: { file: Ifile }) {
   );
   // Handler
   const onClick = () => {
+
     const { id, filename, content } = file;
     dispath(setClicedFileAction({ filename, fileContent: content }));
     dispath(setActiveTapId(id));
@@ -18,6 +19,17 @@ function OpenfilesBarTap({ file }: { file: Ifile }) {
   const onRemove = (id:string)=>{
     const filtred =opendFiles.filter(file=>file.id !== id)
     const lastTap = filtred[filtred.length - 1]
+    if(!lastTap){
+      dispath(setOpendFileAction([]));
+    dispath(
+      setClicedFileAction({
+        filename: "",
+        fileContent: "",
+      })
+    );
+    dispath(setActiveTapId(""))
+      return ;
+    }
     dispath(setActiveTapId(lastTap.id))
     dispath(setClicedFileAction({filename:lastTap.filename,fileContent:lastTap.content}))
     dispath(setOpendFileAction(filtred))
