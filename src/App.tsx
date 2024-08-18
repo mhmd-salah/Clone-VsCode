@@ -4,16 +4,18 @@ import OpendBar from "./Components/OpendBar";
 import { fileTree } from "./Data/FileTree";
 import { RootState } from "./app/store";
 import FileSyntaxHighlighter from "./Components/FileSyntaxHighlighter";
+import Welcome from "./Components/Welcome";
 
 function App() {
   const { clickedFiles } = useSelector(
     (state: RootState) => state.fileTreeSlice
   );
   const { fileContent } = clickedFiles;
+
   return (
     <>
       {/* <FileComponent fileTree={fileTree} /> */}
-      <div className="text-center p-2 bg-black border-b pl-3 border-white/20">
+      <div className="text-center p-2 bg-black border-b pl-3 border-white/20" >
         <img src="/icons/vscode.png" width={20} height={20} />
       </div>
       <div className="flex bg-[111] h-[calc(100vh-36.8px)] ">
@@ -25,11 +27,9 @@ function App() {
             <OpendBar />
           </div>
           {fileContent ? (
-            <FileSyntaxHighlighter content={fileContent as string} />
+              <FileSyntaxHighlighter content={fileContent} />
           ) : (
-            <div className="w-full h-[calc(100vh-40px)] flex items-center justify-center select-none">
-              <img src="/icons/vscode.png" className="opacity-30" />
-            </div>
+            <Welcome/>
           )}
         </div>
       </div>
@@ -37,4 +37,7 @@ function App() {
   );
 }
 
+setTimeout(() => {
+  
+}, 1000);
 export default App;
